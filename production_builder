@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# un-comment out line with '$1' and comment out line with '$2' from file '$3'
+function swap_comment {
+	sed -E -e "/$1/ s%//(\w)%\1%" -e "/$2/ s%^(\t*)(\w)%\1//\2%" -i "$3"
+}
+
+swap_comment production development src/components/ReCaptcha.vue 
+npm run build
+swap_comment development production src/components/ReCaptcha.vue 
