@@ -37,7 +37,8 @@ export  default {
 		recaptchaInit() {
 			var self = this;
 			setTimeout(function() {
-				if(typeof grecaptcha === 'undefined') {
+				if(typeof grecaptcha === 'undefined'
+				|| typeof grecaptcha.render === 'undefined') {
 					self.recaptchaInit();
 				} else { 
 					this.captchaInstance = grecaptcha.render('captcha', {
